@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  present: 1
+  employee: one
+  absent: 1
+  salary: 1
+  allowance_amount: 1
+  deduction_amount: 1
+  net: 1
+
+two:
+  present: 1
+  employee: two
+  absent: 1
+  salary: 1
+  allowance_amount: 1
+  deduction_amount: 1
+  net: 1

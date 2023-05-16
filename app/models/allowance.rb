@@ -1,0 +1,2 @@
+class Allowance < ApplicationRecord
+end
