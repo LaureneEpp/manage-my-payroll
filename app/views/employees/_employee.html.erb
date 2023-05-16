@@ -1,0 +1,42 @@
+<div id="<%= dom_id employee %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Index:</strong>
+    <%= employee.index %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Show:</strong>
+    <%= employee.show %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">New:</strong>
+    <%= employee.new %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Create:</strong>
+    <%= employee.create %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Edit:</strong>
+    <%= employee.edit %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Update:</strong>
+    <%= employee.update %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Destroy:</strong>
+    <%= employee.destroy %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this employee", employee, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this employee', edit_employee_path(employee), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
