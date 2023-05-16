@@ -8,11 +8,12 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= javascript_importmap_tags 'application' %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-blue-100">
+    <%= render 'layouts/navigation' %>
+    <main class="container mx-auto mt-28 px-5 flex bg-blue-200">
       <%= yield %>
     </main>
   </body>
