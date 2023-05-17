@@ -1,9 +1,12 @@
 // get all the links
-const sideMenu = document.querySelector('.sidebar')
-const menu_icon = document.querySelector('.menu-icon')
+const arrow = document.querySelector("#arrow")
 const close_icon = document.querySelector('#close-icon')
+const main_container = document.querySelector("main")
+const menu_icon = document.querySelector('.menu-icon')
+const sideMenu = document.querySelector('.sidebar')
 const subMenu = document.querySelector("#submenu")
- const arrow = document.querySelector("#arrow")
+var w = document.documentElement.clientWidth || window.innerWidth;
+
 
 close_icon.addEventListener('click', openSidebar);
 menu_icon.addEventListener('click', openSidebar);
@@ -16,7 +19,11 @@ function dropdown() {
   dropdown();
 
 function openSidebar() {
-    sideMenu.classList.toggle("hidden");
- }
-
-console.log('Test for Sidebar')
+  sideMenu.classList.toggle("hidden");
+  if  ((!sideMenu.classList.contains('hidden')) && w >= 1023 && w <= 768) {
+    main_container.style.marginLeft = "25%"
+    sideMenu.style.width = "25%"
+    console.log('Test for Sidebar')
+  }
+}
+openSidebar();
