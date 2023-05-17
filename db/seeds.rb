@@ -13,7 +13,6 @@ puts "Employees deleted"
 
 puts "🌱 Seeding..."
 
-
 10.times do 
     Employee.create(
         first_name: Faker::Name.first_name,
