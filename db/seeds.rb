@@ -7,11 +7,20 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
+Team.delete_all
 Employee.delete_all
 
+puts "Teams deleted"
 puts "Employees deleted"
 
 puts "🌱 Seeding..."
+
+11.times do 
+    Team.create(name: Faker::Company.department)
+end
+
+puts "#{Team.count} teams have been created."
+
 
 10.times do 
     Employee.create(
@@ -19,7 +28,7 @@ puts "🌱 Seeding..."
         last_name: Faker::Name.last_name,
         email: Faker::Internet.email, 
         manager: Faker::Boolean.boolean,
-        team: Faker::Company.department
+        team_id: rand(1..11)
     )
 end
 

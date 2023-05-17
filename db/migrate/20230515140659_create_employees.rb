@@ -5,7 +5,8 @@ class CreateEmployees < ActiveRecord::Migration[7.0]
       t.string :last_name
       t.string :email
       t.boolean :manager
-      t.integer :team
+      t.references :team, null: false, foreign_key: true
+
 
       t.timestamps
     end
