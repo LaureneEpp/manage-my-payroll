@@ -1,6 +1,8 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: %i[ show edit update destroy ]
 
+  require "mini_magick"
+
   # GET /employees or /employees.json
   def index
     @employees = Employee.all
@@ -65,6 +67,6 @@ class EmployeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.require(:employee).permit(:first_name, :last_name, :email, :manager, :team)
+      params.require(:employee).permit(:first_name, :last_name, :email, :manager, :team, :avatar)
     end
 end

@@ -1,12 +1,9 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+<div class="h-full w-full flex flex-col justify-center items-center text-center">
+    <% if @employee.avatar.attached? %>
+        <%= image_tag (@employee.avatar_thumbnail), class:'rounded-full'  %>
     <% end %>
-    <%= link_to 'Edit this employee', edit_employee_path(@employee), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this employee', employee_path(@employee), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <div class="employee-information py-12">
+        <h1 class="font-serif text-2xl font-extrabold tracking-widest uppercase"><%= @employee.fullname %></h1>
+        <h2 class="font-serif text-1xl font-extrabold tracking-widest"><%= @employee.team.name %></h2>
     </div>
-    <%= link_to 'Back to employees', employees_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  </div>
 </div>
