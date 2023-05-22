@@ -1,5 +1,6 @@
 class Team < ApplicationRecord
     has_many :employees
+    belongs_to :departement
     # enum :name, { 
     #     "HR": 0, 
     #     "Accounting": 1,

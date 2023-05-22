@@ -1,0 +1,71 @@
+    <main class="p-6 sm:p-10 space-y-6">
+      <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
+        <div class="mr-6">
+          <h1 class="text-4xl font-semibold mb-2">Dashboard</h1>
+        </div>
+      </div>
+      <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div class="flex items-center p-8 bg-white shadow rounded-lg">
+          <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
+            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <div>
+            <span class="block text-2xl font-bold"><%= @employees_count %></span>
+            <span class="block text-gray-500">Employees</span>
+          </div>
+        </div>
+        <div class="flex items-center p-8 bg-white shadow rounded-lg">
+          <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
+            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <div>
+            <span class="block text-2xl font-bold"><%= @managers.count %></span>
+            <span class="block text-gray-500">Managers</span>
+          </div>
+        </div>
+      </section>
+      <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
+        <div class="row-span-3 bg-white shadow rounded-lg">
+          <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
+            <span>All employees</span>
+            <!-- Refer here for full dropdown menu code: https://tailwindui.com/components/application-ui/elements/dropdowns -->
+          </div>
+          <div class="overflow-y-auto" style="max-height: 24rem;">
+            <ul class="p-6 space-y-6">
+              <% @employees.each do |employee| %>
+                <li class="flex items-center">
+                  <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                    <%= image_tag(employee.avatar) %>
+                  </div>
+                  <span class="text-gray-600"><%= employee.fullname %></span>
+                  <span class="ml-auto font-semibold"><%= employee.departement.name %></span>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="row-span-3 bg-white shadow rounded-lg">
+          <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
+            <span>Managers</span>
+          </div>
+          <div class="overflow-y-auto" style="max-height: 24rem;">
+            <ul class="p-6 space-y-6">
+              <% @managers.each do |manager| %>
+                <li class="flex items-center">
+                  <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                    <%= image_tag(manager.avatar) %>
+                  </div>
+                  <span class="text-gray-600"><%= manager.fullname %></span>
+                  <span class="ml-auto font-semibold"><%= manager.departement.name %></span>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
