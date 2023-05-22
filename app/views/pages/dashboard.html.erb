@@ -41,7 +41,7 @@
                   <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
                     <%= image_tag(employee.avatar) %>
                   </div>
-                  <span class="text-gray-600"><%= employee.fullname %></span>
+                  <span class="text-gray-600"><%= link_to employee.fullname, employee_path(employee) %></span>
                   <span class="ml-auto font-semibold"><%= employee.departement.name %></span>
                 </li>
               <% end %>
@@ -59,7 +59,7 @@
                   <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
                     <%= image_tag(manager.avatar) %>
                   </div>
-                  <span class="text-gray-600"><%= manager.fullname %></span>
+                  <span class="text-gray-600"><%= link_to manager.fullname, employee_path(manager) %></span>
                   <span class="ml-auto font-semibold"><%= manager.departement.name %></span>
                 </li>
               <% end %>
