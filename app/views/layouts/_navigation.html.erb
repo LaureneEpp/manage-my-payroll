@@ -50,15 +50,11 @@
         </div>
       </div>
       <div class="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold" id="submenu" >
-        <h1 class="cursor-pointer p-2 hover:bg-rose-600 rounded-md mt-1">
-          Social
-        </h1>
-        <h1 class="cursor-pointer p-2 hover:bg-rose-600 rounded-md mt-1">
-          Personal
-        </h1>
-        <h1 class="cursor-pointer p-2 hover:bg-rose-600 rounded-md mt-1">
-          Friends
-        </h1>
+        <% @teams.each do |t| %>
+          <h1 class="cursor-pointer p-2 hover:bg-rose-600 rounded-md mt-1">
+            <%= link_to t.name, departement_team_path(t.departement, t) %>
+          </h1>
+        <% end %>
       </div>
       <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-rose-600 text-white">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">

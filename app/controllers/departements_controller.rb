@@ -3,7 +3,7 @@ class DepartementsController < ApplicationController
 
   def index
     @departements = Departement.all.order('name ASC')
-    @teams_d = Team.all.group_by{|d| d.departement}
+    # @teams_d = Team.all.group_by{|d| d.departement}
     # @teams_departement = @departements.map {|t| t.teams }.map {|n| n}
     # @list_d = @departements.each do |d| d end
     # @teams_d = @list_d.map {|t| t.teams}
@@ -11,7 +11,7 @@ class DepartementsController < ApplicationController
     # @teams = @departement.teams.build
     # @team_per_departement = @departements.map {|d| d.teams.map {|t| t.name}}
     # @teams_per_departement = Team.where(departement: d)
-    end
+  end
 
   def show
   end
@@ -21,6 +21,4 @@ class DepartementsController < ApplicationController
   def set_departement
     @departement = Departement.find(params[:id])
   end
-
 end
-@tea
