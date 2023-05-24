@@ -34,3 +34,5 @@ openSidebar();
 close_icon.addEventListener('click', openSidebar);
 menu_icon.addEventListener('click', openSidebar);
 arrow.addEventListener('click', dropdown)
+
+console.log('Test for Sidebar')

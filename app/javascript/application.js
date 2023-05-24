@@ -2,3 +2,4 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "./custom/sideMenu.js"
+import "./custom/modal.js"
