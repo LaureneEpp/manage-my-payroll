@@ -2,7 +2,9 @@ class DepartementsController < ApplicationController
   before_action :set_departement, only: %i[ show ]
 
   def index
-    @departements = Departement.all.order('name ASC')
+    @hash_departement_teams = Team.all.group_by{|d|d.departement}
+    # @departements = hash_departement_teams.@keys
+    # @departements = Departement.all.order('name ASC')
     # @teams_d = Team.all.group_by{|d| d.departement}
     # @teams_departement = @departements.map {|t| t.teams }.map {|n| n}
     # @list_d = @departements.each do |d| d end
