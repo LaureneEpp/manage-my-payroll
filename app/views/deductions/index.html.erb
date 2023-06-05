@@ -1,4 +1,54 @@
-<div>
-  <h1 class="font-bold text-4xl">Deductions#index</h1>
-  <p>Find me in app/views/deductions/index.html.erb</p>
+<div class="flex w-screen h-screen text-gray-800">
+	<div class="flex flex-col w-56 border-r border-gray-800">
+		<button class="relative text-sm focus:outline-none group">
+			<div class="flex items-center justify-between w-full h-16 px-4 border-b border-gray-800 hover:bg-gray-800 hover:text-pink-200">
+				<span class="font-medium">Deductions</span> 
+				<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+					<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+				</svg>
+			</div>
+		</button>
+		<div class="flex flex-col flex-grow p-4 overflow-auto">
+			<%= turbo_stream_from "deductions" %>
+				<div id="deductions" class="text-center">
+					<%= render @deductions %>
+				</div>
+				<%= link_to 'New deduction', new_deduction_path, data: { turbo_frame: "modal" } %>
+		</div>
+	</div>
+	<div class="flex flex-col flex-grow">
+		<div class="flex items-center flex-shrink-0 h-16 px-8 border-b border-gray-800">
+			<h1 class="text-lg font-medium">Dashboard deductions</h1>
+		</div>
+		<div class="flex-grow p-6 overflow-auto bg-gray-700">
+			<div class="grid grid-cols-3 gap-6">
+				<% @deductions.each do |deduction| %>
+					<div data-controller="modal" class="h-24 col-span-3 md:col-span-1 bg-white border border-gray-800">
+						<button data-action="modal#open" class="h-full w-full">
+					
+						<div class=" flex flex-row items-center">
+							<div class="w-1/2 flex items-center justify-start mx-5 text-2xl font-bold break-all overflow-hidden"><%= deduction.name %></div>
+							<div class="w-1/2 flex items-center justify-center text-xl font-semibold break-all overflow-hidden"><%= deduction.amount %></div>
+						</div>
+						</button>
+						<dialog data-modal-target="modal" class="transform overflow-hidden rounded-lg bg-white backdrop:bg-gray-900 backdrop:bg-opacity-75 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+							<div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+								<div class="sm:flex sm:items-start">
+									<button type="button" data-action="modal#close" class="absolute top-4 right-4 h-12 w-12  sm:mx-0 sm:h-10 sm:w-10">X</button>
+									<div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+										<h1 class="text-base text-xl font-semibold leading-6 text-gray-800"><%= deduction.name %></h1>
+										<p class="mt-2 text-lg text-gray-500"><%= deduction.description %></p>
+									</div>
+								</div>
+        						<div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+									<button type="button" data-action="edit#update" class="inline-flex w-full justify-center rounded-md bg-gray-800 text-pink-200 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-gray-900 sm:ml-3 sm:w-auto">Edit</button>
+									<button type="button" data-action="modal#close" class="mt-3 inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm ring-1 ring-inset ring-gray-800 hover:bg-gray-50 sm:mt-0 sm:w-auto">Close</button>
+								</div>
+							</div>
+						</dialog>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>

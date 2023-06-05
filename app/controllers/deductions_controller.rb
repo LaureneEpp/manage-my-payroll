@@ -4,7 +4,7 @@ class DeductionsController < ApplicationController
 
   # GET /deductions or /deductions.json
   def index
-    @deductions = Deduction.all
+    @deductions = Deduction.all.order('name ASC')
     @deduction = Deduction.new
   end
 
@@ -24,17 +24,27 @@ class DeductionsController < ApplicationController
   # POST /deductions or /deductions.json
   def create
     @deduction = Deduction.new(deduction_params)
-
-    respond_to do |format|
-      if @deduction.save
-        format.html { redirect_to deduction_url(@deduction), notice: "deduction was successfully created." }
-        format.json { render :show, status: :created, location: @deduction }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @deduction.errors, status: :unprocessable_entity }
-      end
+    if @deduction.save
+      redirect_to deductions_url, notice: 'deduction was successfully created.'
+    else
+      render :new
     end
   end
+  
+  
+  # def create
+  #   @deduction = Deduction.new(deduction_params)
+
+  #   respond_to do |format|
+  #     if @deduction.save
+  #       format.html { redirect_to deduction_url(@deduction), notice: "deduction was successfully created." }
+  #       format.json { render :show, status: :created, location: @deduction }
+  #     else
+  #       format.html { render :new, status: :unprocessable_entity }
+  #       format.json { render json: @deduction.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /deductions/1 or /deductions/1.json
   def update
