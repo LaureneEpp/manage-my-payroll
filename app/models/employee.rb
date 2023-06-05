@@ -1,6 +1,9 @@
 class Employee < ApplicationRecord
   belongs_to :team
+  has_many :payslips
+
   has_one :departement, through: :team
+  has_one :position
 
   has_one_attached :avatar
   after_commit :add_default_avatar, on: %i[create update]

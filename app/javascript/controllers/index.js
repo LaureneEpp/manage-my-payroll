@@ -6,3 +6,9 @@ import { application } from "./application"
 
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
+
+import ResetFormController from "./reset_form_controller"
+application.register("reset-form", ResetFormController)
+
+import TurboModalController from "./turbo_modal_controller"
+application.register("turbo-modal", TurboModalController)

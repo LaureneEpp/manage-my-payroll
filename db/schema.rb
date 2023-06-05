@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_22_083601) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_18_105927) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_083601) do
   create_table "allowances", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_083601) do
   create_table "deductions", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,14 +70,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_083601) do
     t.string "email"
     t.boolean "manager"
     t.bigint "team_id", null: false
+    t.bigint "position_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["position_id"], name: "index_employees_on_position_id"
     t.index ["team_id"], name: "index_employees_on_team_id"
   end
 
   create_table "payslips", force: :cascade do |t|
     t.integer "present"
     t.bigint "employee_id", null: false
+    t.bigint "allowance_id", null: false
+    t.bigint "deduction_id", null: false
     t.integer "absent"
     t.integer "salary"
     t.integer "allowance_amount"
@@ -83,6 +89,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_083601) do
     t.integer "net"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["allowance_id"], name: "index_payslips_on_allowance_id"
+    t.index ["deduction_id"], name: "index_payslips_on_deduction_id"
     t.index ["employee_id"], name: "index_payslips_on_employee_id"
   end
 
@@ -96,15 +104,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_083601) do
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.bigint "departement_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "departement_id", null: false
     t.index ["departement_id"], name: "index_teams_on_departement_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "employees", "positions"
   add_foreign_key "employees", "teams"
+  add_foreign_key "payslips", "allowances"
+  add_foreign_key "payslips", "deductions"
   add_foreign_key "payslips", "employees"
   add_foreign_key "teams", "departements"
 end

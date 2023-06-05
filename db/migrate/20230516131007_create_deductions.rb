@@ -3,6 +3,7 @@ class CreateDeductions < ActiveRecord::Migration[7.0]
     create_table :deductions do |t|
       t.string :name
       t.string :description
+      t.integer :amount
 
       t.timestamps
     end

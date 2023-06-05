@@ -3,6 +3,8 @@ class CreatePayslips < ActiveRecord::Migration[7.0]
     create_table :payslips do |t|
       t.integer :present
       t.references :employee, null: false, foreign_key: true
+      t.references :allowance, null: false, foreign_key: true
+      t.references :deduction, null: false, foreign_key: true
       t.integer :absent
       t.integer :salary
       t.integer :allowance_amount

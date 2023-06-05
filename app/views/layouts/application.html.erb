@@ -15,6 +15,7 @@
     <%= render 'layouts/navigation' %>
     <main class="mx-auto max-w-7xl py-6 px-6 sm:px-6 lg:px-8 min-h-screen h-full">
       <div class="py-12 w-screen h-screen">
+        <%= turbo_frame_tag "modal" %>
         <%= yield %>
       </div>
     </main>
