@@ -64,7 +64,9 @@ puts "#{Position.count} positions have been created."
         email: Faker::Internet.email, 
         manager: Faker::Boolean.boolean,
         team_id: rand(1..20),
-        position_id: rand(1..20)
+        position_id: rand(1..20), 
+        city: Faker::Address.city, 
+        country: Faker::Address.country
     )
 end
 puts "#{Employee.count} employees have been created."

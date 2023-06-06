@@ -1,9 +1,87 @@
-<div class="h-full w-full flex flex-col justify-center items-center text-center">
-    <% if @employee.avatar.attached? %>
-        <%= image_tag (@employee.avatar_thumbnail), class:'rounded-full'  %>
-    <% end %>
-    <div class="employee-information py-12">
-        <h1 class="font-serif text-2xl font-extrabold tracking-widest uppercase"><%= @employee.fullname %></h1>
-        <h2 class="font-serif text-1xl font-extrabold tracking-widest"><%= @employee.team.name %></h2>
+<div class="flex flex-col h-screen justify-center items-center text-center">
+    <div class="flex flex-col items-center my-3">
+        <% if @employee.avatar.attached? %>
+            <%= image_tag (@employee.avatar_thumbnail), class:'rounded-full'  %>
+        <% end %>
+        <div class="py-12 flex flex-col items-center">
+            <h1 class="font-serif text-2xl font-extrabold tracking-widest uppercase"><%= @employee.fullname %></h1>
+            <h2 class="font-serif text-1xl font-extrabold tracking-widest"><%= @employee.departement.name %></h2>
+            <%= link_to edit_employee_path(@employee), data: { turbo_frame: "modal" } do %>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 font-serif text-1xl font-extrabold tracking-widest">
+                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
+                <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
+                </svg>
+            <% end %>
+        </div>
+    </div>
+    <div class="flex flex-col overflow-y-auto px-5 py-3">
+    <div class="flex flex-col my-3">
+        <span class="flex items-start my-4 mx-2 text-2xl font-light ">Personal data</span>
+        <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-800 bg-green-200 rounded-full mr-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="flex text-xl font-bold">Location</span>
+                    <span class="flex items-start text-gray-500"><%= @employee.city %>|<%= @employee.country %></span>
+                </div>
+            </div>
+            <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-800 bg-green-200 rounded-full mr-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="flex text-xl font-bold">Email</span>
+                    <span class="flex items-start text-gray-500"><%= @employee.email %></span>
+                </div>
+            </div>
+        </section>
+    </div>
+        <div class="flex flex-col my-3">
+            <span class="flex items-start my-4 mx-2 text-2xl font-light ">Team data</span>
+            <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+                <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-800 bg-green-200 rounded-full mr-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z" clip-rule="evenodd" />
+                            <path d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="flex text-xl font-bold">Team</span>
+                        <span class="flex items-start text-gray-500 break-all overflow-hidden"><%= @employee.team.name %> in <%= @employee.departement.name %></span>
+                    </div>
+                </div>
+                <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-800 bg-green-200 rounded-full mr-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd" d="M4.5 3.75a3 3 0 00-3 3v10.5a3 3 0 003 3h15a3 3 0 003-3V6.75a3 3 0 00-3-3h-15zm4.125 3a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zm-3.873 8.703a4.126 4.126 0 017.746 0 .75.75 0 01-.351.92 7.47 7.47 0 01-3.522.877 7.47 7.47 0 01-3.522-.877.75.75 0 01-.351-.92zM15 8.25a.75.75 0 000 1.5h3.75a.75.75 0 000-1.5H15zM14.25 12a.75.75 0 01.75-.75h3.75a.75.75 0 010 1.5H15a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h3.75a.75.75 0 000-1.5H15z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="flex text-xl font-bold">Position</span>
+                        <span class="flex items-start text-gray-500"><%= @employee.team.name %> in <%= @employee.position.name %></span>
+                    </div>
+                </div>
+                <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-800 bg-green-200 rounded-full mr-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z" clip-rule="evenodd" />
+                            <path d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="flex text-xl font-bold">Manager?</span>
+                        <span class="flex items-start text-gray-500"><%= @employee.manager %></span>
+                    </div>
+                </div>
+            </section>       
+        </div>
     </div>
 </div>

@@ -36,11 +36,11 @@ class EmployeesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /employees/1 or /employees/1.json
   def update
     respond_to do |format|
       if @employee.update(employee_params)
-        format.html { redirect_to employee_url(@employee), notice: "Employee was successfully updated." }
+        format.turbo_stream
+        format.html { redirect_to employee_url(@employee), notice: "employee was successfully updated." }
         format.json { render :show, status: :ok, location: @employee }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -48,6 +48,20 @@ class EmployeesController < ApplicationController
       end
     end
   end
+
+
+  # PATCH/PUT /employees/1 or /employees/1.json
+  # def update
+  #   respond_to do |format|
+  #     if @employee.update(employee_params)
+  #       format.html { redirect_to employee_url(@employee), notice: "Employee was successfully updated." }
+  #       format.json { render :show, status: :ok, location: @employee }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json { render json: @employee.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /employees/1 or /employees/1.json
   def destroy
@@ -67,6 +81,6 @@ class EmployeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.require(:employee).permit(:first_name, :last_name, :email, :manager, :team, :avatar)
+      params.require(:employee).permit(:first_name, :last_name, :email, :manager, :team, :position, :city, :country, :avatar)
     end
 end
