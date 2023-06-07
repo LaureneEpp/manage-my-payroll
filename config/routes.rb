@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :departements, only: [:index, :show] do
     resources :teams, only: [:index, :show]
   end
-  resources :allowances
-  resources :deductions
-  resources :payslips
+  
+  resources :payslips do
+    resources :allowances, only: [:index, :show]
+    resources :deductions, only: [:index, :show]
+  end
 end

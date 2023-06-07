@@ -93,10 +93,7 @@ puts "#{Deduction.count} deductions have been created."
         allowance_amount: rand(1..100),
         deduction_amount: rand(1..100),
         net: rand(2000..5000),
-        employee_id: rand(1..10),
-        allowance_id: rand(1..10),
-        deduction_id: rand(1..10),
-        
+        employee_id: rand(1..10)        
     )
 end
 

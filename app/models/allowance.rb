@@ -1,3 +1,5 @@
 class Allowance < ApplicationRecord
-    has_many :payslips
+    # belongs_to :payslip
+    has_many :payslip_allowances
+    has_many :payslips, through: :payslip_allowances
 end

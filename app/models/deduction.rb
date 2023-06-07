@@ -1,3 +1,5 @@
 class Deduction < ApplicationRecord
-    has_many :payslips
+    # belongs_to :payslip
+    has_many :payslip_deductions
+    has_many :payslips, through: :payslip_deductions
 end

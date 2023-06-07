@@ -1,6 +1,6 @@
 class Employee < ApplicationRecord
   belongs_to :team
-  has_many :payslips
+  has_many :payslip
 
   has_one :departement, through: :team
   belongs_to :position

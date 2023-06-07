@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_072514) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_07_122256) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,22 +68,38 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_072514) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
+    t.string "city"
+    t.string "country"
     t.boolean "manager"
     t.bigint "team_id", null: false
     t.bigint "position_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "city"
-    t.string "country"
     t.index ["position_id"], name: "index_employees_on_position_id"
     t.index ["team_id"], name: "index_employees_on_team_id"
+  end
+
+  create_table "payslip_allowances", force: :cascade do |t|
+    t.bigint "allowance_id", null: false
+    t.bigint "payslip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["allowance_id"], name: "index_payslip_allowances_on_allowance_id"
+    t.index ["payslip_id"], name: "index_payslip_allowances_on_payslip_id"
+  end
+
+  create_table "payslip_deductions", force: :cascade do |t|
+    t.bigint "deduction_id", null: false
+    t.bigint "payslip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deduction_id"], name: "index_payslip_deductions_on_deduction_id"
+    t.index ["payslip_id"], name: "index_payslip_deductions_on_payslip_id"
   end
 
   create_table "payslips", force: :cascade do |t|
     t.integer "present"
     t.bigint "employee_id", null: false
-    t.bigint "allowance_id", null: false
-    t.bigint "deduction_id", null: false
     t.integer "absent"
     t.integer "salary"
     t.integer "allowance_amount"
@@ -91,8 +107,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_072514) do
     t.integer "net"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["allowance_id"], name: "index_payslips_on_allowance_id"
-    t.index ["deduction_id"], name: "index_payslips_on_deduction_id"
     t.index ["employee_id"], name: "index_payslips_on_employee_id"
   end
 
@@ -116,8 +130,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_072514) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "employees", "positions"
   add_foreign_key "employees", "teams"
-  add_foreign_key "payslips", "allowances"
-  add_foreign_key "payslips", "deductions"
+  add_foreign_key "payslip_allowances", "allowances"
+  add_foreign_key "payslip_allowances", "payslips"
+  add_foreign_key "payslip_deductions", "deductions"
+  add_foreign_key "payslip_deductions", "payslips"
   add_foreign_key "payslips", "employees"
   add_foreign_key "teams", "departements"
 end
