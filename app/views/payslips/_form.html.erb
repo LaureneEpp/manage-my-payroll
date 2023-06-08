@@ -1,14 +1,41 @@
 <%= simple_form_for @payslip, remote: true, html: { class: " p-2 mt-3"}, data: { turbo_frame: "_top" } do |f| %>
   <div class="form-inputs">
-    <%= f.input :present, as: :numeric %>
-    <%= f.input :absent, as: :numeric %>
-    <%= f.input :salary, as: :numeric %>
-    <%= f.input :net, as: :numeric %>
-
-
-
+    <div>
+      <h2 class="text-base font-semibold my-3">Configure presence</h2>
+      <%= f.input :present, as: :numeric %>
+      <%= f.input :absent, as: :numeric %>
+    </div>
+    <div>
+      <h2 class="text-base font-semibold my-3">Configure salary</h2>
+      <%= f.input :salary, as: :numeric %>
+      <%= f.input :net, as: :numeric %>
+    </div>
+    <div>
+      <h2 class="text-base font-semibold my-3">Configure taxation</h2>
+      <div>
+        <h3 class="font-light my-2"> Choose one or more allowances</h3>
+        <div class="grid gap-x-8 gap-y-4 grid-cols-3">
+        <%= f.collection_check_boxes :allowance_ids, Allowance.all, :id, :name do |b| %>
+          <div class="mx-2 my-2 inline-flex">
+            <span class="ml-2"><%= b.check_box %></span>
+            <span class="ml-2"><%= b.label %></span>
+          </div>
+        <% end %>
+        </div>
+      </div>
+        
+        <h3 class="font-light my-2"> Choose one or more deductions</h3>
+        <div class="grid gap-x-8 gap-y-4 grid-cols-3">
+          <%= f.collection_check_boxes :deduction_ids, Deduction.all, :id, :name do |b| %>
+          <div class="mx-2 my-2 inline-flex">
+            <span class="ml-2"><%= b.check_box %></span>
+            <span class="ml-2"><%= b.label %></span>
+          </div>
+          <% end %>
+        </div>
+    </div>
   </div>
-  <div class="form-action">
+  <div class="form-action my-2">
     <%= button_to 'Cancel', payslip_path(@payslip), class:"mt-3 inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm ring-1 ring-inset ring-gray-800 hover:bg-gray-50 sm:mt-0 sm:w-auto" %>  
     <%= f.submit 'Update', class:"mt-3 inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm ring-1 ring-inset ring-gray-800 hover:bg-gray-50 sm:mt-0 sm:w-auto" %>
    </div>

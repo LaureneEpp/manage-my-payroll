@@ -3,7 +3,7 @@
         <div class="py-12 flex flex-col items-center">
             <h1 class="font-serif text-2xl font-extrabold tracking-widest uppercase"><%= @payslip.employee.fullname %></h1>
             <h2 class="font-serif text-1xl font-extrabold tracking-widest"><%= @payslip.employee.departement.name %></h2>
-            <%= link_to edit_payslip_path(@payslip) do %>
+            <%= link_to edit_payslip_path(@payslip), data: { turbo_frame: "modal" } do %>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 font-serif text-1xl font-extrabold tracking-widest text-red-400">
                 <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
                 <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
@@ -11,7 +11,7 @@
             <% end %>
         </div>
     </div>
-    <div class="flex flex-col w-full overflow-y-auto px-10 py-3">
+    <div class="flex flex-col w-full overflow-y-auto px-8 py-3">
       <div class="flex flex-col my-3">
           <span class="flex items-start my-4 mx-2 text-2xl font-light ">Configure presence</span>
           <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
