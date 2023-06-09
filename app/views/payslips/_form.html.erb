@@ -15,14 +15,13 @@
       <div>
         <h3 class="font-light my-2"> Choose one or more allowances</h3>
         <div class="grid gap-x-8 gap-y-4 grid-cols-3">
-        <%= f.collection_check_boxes :allowance_ids, Allowance.all, :id, :name do |b| %>
-          <div class="mx-2 my-2 inline-flex">
-            <span class="ml-2"><%= b.check_box %></span>
-            <span class="ml-2"><%= b.label %></span>
-          </div>
-        <% end %>
+          <%= f.collection_check_boxes :allowance_ids, Allowance.all, :id, :name do |b| %>
+            <div class="mx-2 my-2 inline-flex">
+              <span class="ml-2"><%= b.check_box %></span>
+              <span class="ml-2"><%= b.label %></span>
+            </div>
+          <% end %>
         </div>
-      </div>
         
         <h3 class="font-light my-2"> Choose one or more deductions</h3>
         <div class="grid gap-x-8 gap-y-4 grid-cols-3">
@@ -41,3 +40,4 @@
    </div>
 <% end %> 
 
+r

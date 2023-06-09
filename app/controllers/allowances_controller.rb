@@ -71,6 +71,7 @@ class AllowancesController < ApplicationController
 
   # DELETE /allowances/1 or /allowances/1.json
   def destroy
+    # @allowance.payslip_allowances.destroy
     @allowance.destroy
 
     respond_to do |format|

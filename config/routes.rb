@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     resources :teams, only: [:index, :show]
   end
   
-  resources :payslips do
-    resources :allowances, only: [:index, :show]
-    resources :deductions, only: [:index, :show]
-  end
-end
+  resources :allowances, only: [:index, :show, :destroy]
+  resources :payslip_allowances, only: [:destroy]
+  resources :deductions, only: [:index, :show, :destroy]
+  resources :payslip_deductions, only: [:destroy]
+  resources :payslips
+end 

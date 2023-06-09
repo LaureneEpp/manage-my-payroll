@@ -55,12 +55,12 @@
                     </div>
                     <div class="overflow-y-auto" style="max-height: 24rem;">
                         <div class="grid grid-cols-3 gap-3">
-                        <% @payslip.allowances.each do |a| %>
-                            <div class="flex items-center justify-center text-base  text-gray-500 bg-red-300 rounded-lg my-2 mx-2">
-                            <span class="p-2"><%= a.name %>
-                            </span>
-                            </div>
-                        <% end %> 
+                            <% @payslip.allowances.each do |a| %>
+                                <div class="flex items-center justify-center text-base  text-gray-500 bg-red-300 rounded-lg my-2 mx-2">
+                                <span class="p-2"><%= a.name %>
+                                </span>
+                                </div>
+                            <% end %>
                         </div>
                     </div>
                 </div>
@@ -70,12 +70,12 @@
                     </div>
                     <div class="overflow-y-auto" style="max-height: 24rem;">
                         <div class="grid grid-cols-3 gap-3">
-                        <% @payslip.deductions.each do |d| %>
-                            <div class="flex items-center justify-center text-base  text-gray-500 bg-red-300 rounded-lg my-2 mx-2">
-                            <span class="p-2"><%= d.name %>
-                            </span>
-                            </div>
-                        <% end %> 
+                            <% @payslip.deductions.each do |d| %>
+                                <div class="flex items-center justify-center text-base  text-gray-500 bg-red-300 rounded-lg my-2 mx-2">
+                                <span class="p-2"><%= d.name %>
+                                </span>
+                                </div>
+                            <% end %> 
                         </div>
                     </div>
                 </div>

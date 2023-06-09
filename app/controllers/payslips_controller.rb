@@ -8,6 +8,9 @@ class PayslipsController < ApplicationController
   end
 
   def show
+    # @payslip_allowances = @payslip.allowances
+    @allowances = Allowance.where(payslip_id: @payslip)
+    @payslip.allowances.build
   end
 
   def new
@@ -33,7 +36,6 @@ class PayslipsController < ApplicationController
     if @payslip.update(payslip_params)
       redirect_to payslip_url(@payslip), notice: "Payslip was successfully updated."
     else
-      # Add `status: :unprocessable_entity` here
       render :edit, status: :unprocessable_entity
     end
   end
@@ -60,7 +62,5 @@ class PayslipsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def payslip_params
       params.require(:payslip).permit(:present, :employee, :absent, :salary, :allowance_amount, :deduction_amount, :net, allowance_ids:[], deduction_ids:[] )
-      # params.require(:payslip).permit(:present, :employee, :absent, :salary, :allowance_amount, :deduction_amount, :net, { allowances: [] }, { deductions: [] })
-      # params.require(:payslip).permit(:present, :employee, :absent, :salary, :allowance_amount, :deduction_amount, :net, allowances_attributes: [:id, :name, :description, :amount], deductions_attributes: [:id, :name, :description, :amount] )
     end
 end
