@@ -4,6 +4,15 @@
     padding: 0;
 }
 
-.active {
-    border: 4px solid #dc2626;
-}
+
+  .active {
+    border: 4px solid #dc2626;   
+    background: linear-gradient(to right, #dc2626, #991b1b);
+    background-size: 0% 100%;
+    transition: background-size 0.5s ease;
+    color: white;
+    
+    &:hover {
+        background-size: 100% 100%;
+    }
+  }
