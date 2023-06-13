@@ -27,15 +27,14 @@
 		<div class="flex-grow p-6 overflow-auto bg-gray-700">
 			<div class="grid grid-cols-3 gap-6">
 				<% @allowances.each do |allowance| %>
-					<div data-controller="modal" class="h-24 col-span-3 md:col-span-1 bg-white border border-gray-800">
-						<button data-action="modal#open" class="h-full w-full">
-					
-						<div class=" flex flex-row items-center">
-							<div class="w-1/2 flex items-center justify-start mx-5 text-2xl font-bold break-all overflow-hidden"><%= allowance.name %></div>
-							<div class="w-1/2 flex items-center justify-center text-xl font-semibold break-all overflow-hidden"><%= allowance.amount %></div>
-						</div>
+					<div  data-controller="modal" class="h-24 col-span-3 md:col-span-1 bg-white">
+						<button data-modal="<%= allowance.id%>" data-action="modal#open" class="allowance-button h-full w-full">
+							<div class=" flex flex-row items-center">
+								<div class="w-1/2 flex items-center justify-start mx-5 text-2xl font-bold break-all overflow-hidden"><%= allowance.name %></div>
+								<div class="w-1/2 flex items-center justify-center text-xl font-semibold break-all overflow-hidden"><%= allowance.amount %></div>
+							</div>
 						</button>
-						<dialog data-modal-target="modal" class="transform overflow-hidden rounded-lg bg-white backdrop:bg-gray-900 backdrop:bg-opacity-75 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+						<dialog  data-modal-target="modal" class="allowance-modal transform overflow-hidden rounded-lg bg-white backdrop:bg-gray-900 backdrop:bg-opacity-75 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
 							<div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
 								<div class="sm:flex sm:items-start">
 									<button type="button" data-action="modal#close" class="absolute top-4 right-4 h-12 w-12  sm:mx-0 sm:h-10 sm:w-10">X</button>

@@ -4,4 +4,5 @@ class Allowance < ApplicationRecord
     has_many :payslips, through: :payslip_allowances
 
     validates :name, :description, :amount, presence: true
+    validates :name, uniqueness: true
 end
