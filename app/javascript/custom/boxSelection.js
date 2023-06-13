@@ -1,12 +1,12 @@
 // Get all the links
-const allowance_names = document.querySelectorAll('.allowance-name');
-const buttons = document.querySelectorAll('.allowance-button');
+const taxation_names = document.querySelectorAll('.taxation-name');
+const buttons = document.querySelectorAll('.taxation-button');
 // const array_buttons = Array.from(buttons);
 const allowance_modals = document.querySelectorAll('.allowance-modal');
 
 // if click on allowance name in side bar 
-allowance_names.forEach(name => name.addEventListener('click', (e) => {
-    const clickedButton = name.dataset.allowance;
+taxation_names.forEach(name => name.addEventListener('click', (e) => {
+    const clickedButton = name.dataset.taxation;
     console.log(clickedButton);
       // Check if the clicked element has the data-btn attribute
   if (clickedButton) {

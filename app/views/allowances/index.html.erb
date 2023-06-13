@@ -28,7 +28,7 @@
 			<div class="grid grid-cols-3 gap-6">
 				<% @allowances.each do |allowance| %>
 					<div  data-controller="modal" class="h-24 col-span-3 md:col-span-1 bg-white">
-						<button data-modal="<%= allowance.id%>" data-action="modal#open" class="allowance-button h-full w-full">
+						<button data-modal="<%= allowance.id%>" data-action="modal#open" class="taxation-button h-full w-full">
 							<div class=" flex flex-row items-center">
 								<div class="w-1/2 flex items-center justify-start mx-5 text-2xl font-bold break-all overflow-hidden"><%= allowance.name %></div>
 								<div class="w-1/2 flex items-center justify-center text-xl font-semibold break-all overflow-hidden"><%= allowance.amount %></div>

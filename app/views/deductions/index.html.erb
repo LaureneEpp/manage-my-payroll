@@ -2,7 +2,7 @@
 	<div class="flex flex-col w-56 border-r border-gray-800">
 		<button class="relative text-sm focus:outline-none group">
 			<div class="flex items-center justify-between w-full h-16 px-4 border-b border-gray-800 hover:bg-gray-800 hover:text-pink-200">
-				<span class="font-medium">Deductions</span> 
+				<span class="font-medium">deductions</span> 
 				<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
 					<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
 				</svg>
@@ -13,7 +13,11 @@
 				<div id="deductions" class="text-center">
 					<%= render @deductions %>
 				</div>
-				<%= link_to 'New deduction', new_deduction_path, data: { turbo_frame: "modal" } %>
+				<%= link_to new_deduction_path, data: { turbo_frame: "modal" }, class:'flex justify-center' do %>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 font-semibold text-red-800">
+						<path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
+					</svg>
+				<% end %>
 		</div>
 	</div>
 	<div class="flex flex-col flex-grow">
@@ -23,15 +27,14 @@
 		<div class="flex-grow p-6 overflow-auto bg-gray-700">
 			<div class="grid grid-cols-3 gap-6">
 				<% @deductions.each do |deduction| %>
-					<div data-controller="modal" class="h-24 col-span-3 md:col-span-1 bg-white border border-gray-800">
-						<button data-action="modal#open" class="h-full w-full">
-					
-						<div class=" flex flex-row items-center">
-							<div class="w-1/2 flex items-center justify-start mx-5 text-2xl font-bold break-all overflow-hidden"><%= deduction.name %></div>
-							<div class="w-1/2 flex items-center justify-center text-xl font-semibold break-all overflow-hidden"><%= deduction.amount %></div>
-						</div>
+					<div  data-controller="modal" class="h-24 col-span-3 md:col-span-1 bg-white">
+						<button data-modal="<%= deduction.id%>" data-action="modal#open" class="taxation-button h-full w-full">
+							<div class=" flex flex-row items-center">
+								<div class="w-1/2 flex items-center justify-start mx-5 text-2xl font-bold break-all overflow-hidden"><%= deduction.name %></div>
+								<div class="w-1/2 flex items-center justify-center text-xl font-semibold break-all overflow-hidden"><%= deduction.amount %></div>
+							</div>
 						</button>
-						<dialog data-modal-target="modal" class="transform overflow-hidden rounded-lg bg-white backdrop:bg-gray-900 backdrop:bg-opacity-75 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+						<dialog  data-modal-target="modal" class="deduction-modal transform overflow-hidden rounded-lg bg-white backdrop:bg-gray-900 backdrop:bg-opacity-75 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
 							<div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
 								<div class="sm:flex sm:items-start">
 									<button type="button" data-action="modal#close" class="absolute top-4 right-4 h-12 w-12  sm:mx-0 sm:h-10 sm:w-10">X</button>
