@@ -1,6 +1,6 @@
 class PayslipsController < ApplicationController
   before_action :set_payslip, only: %i[ show edit update destroy ]
-
+  # before_save :update_total_amount, if: :allowance_amount_changed?, only: [:update]
 
   def index
     @payslips = Payslip.all
@@ -10,7 +10,7 @@ class PayslipsController < ApplicationController
   def show
     # @payslip_allowances = @payslip.allowances
     @allowances = Allowance.where(payslip_id: @payslip)
-    @payslip.allowances.build
+    @deductions = Deduction.where(payslip_id: @payslip)
   end
 
   def new
@@ -34,6 +34,7 @@ class PayslipsController < ApplicationController
 
   def update
     if @payslip.update(payslip_params)
+      @payslip.update(allowance_amount: @payslip.calculate_allowances_amount, deduction_amount: @payslip.calculate_deductions_amount)
       redirect_to payslip_url(@payslip), notice: "Payslip was successfully updated."
     else
       render :edit, status: :unprocessable_entity

@@ -1,4 +1,5 @@
 <div class="flex flex-col h-screen justify-center items-center text-center">
+<%= console %>
     <div class="flex flex-col items-center my-3">
         <div class="py-12 flex flex-col items-center">
             <h1 class="font-serif text-2xl font-extrabold tracking-widest uppercase"><%= @payslip.employee.fullname %></h1>
@@ -57,10 +58,10 @@
                         <div class="grid grid-cols-3 gap-3">
                             <% @payslip.allowances.each do |a| %>
                                 <div class="flex items-center justify-center text-base  text-gray-500 bg-red-300 rounded-lg my-2 mx-2">
-                                <span class="p-2"><%= a.name %>
+                                <span class="p-2 break-all"><%= a.name %>
                                 </span>
                                 </div>
-                            <% end %>
+                            <% end %> 
                         </div>
                     </div>
                 </div>
@@ -72,7 +73,7 @@
                         <div class="grid grid-cols-3 gap-3">
                             <% @payslip.deductions.each do |d| %>
                                 <div class="flex items-center justify-center text-base  text-gray-500 bg-red-300 rounded-lg my-2 mx-2">
-                                <span class="p-2"><%= d.name %>
+                                <span class="p-2 break-all"><%= d.name %>
                                 </span>
                                 </div>
                             <% end %> 

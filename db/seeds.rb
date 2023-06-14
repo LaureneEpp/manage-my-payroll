@@ -71,13 +71,11 @@ puts "#{Position.count} positions have been created."
 end
 puts "#{Employee.count} employees have been created."
 
-
 10.times do
     Allowance.create!(name:Faker::Lorem.word, description: Faker::Lorem.sentences(number: 1), amount: rand(1..500)  )
 end
 
 puts "#{Allowance.count} allowances have been created."
-
 
 10.times do
     Deduction.create!(name:Faker::Lorem.word, description: Faker::Lorem.sentences(number: 1), amount: rand(1..500)  )
@@ -90,8 +88,8 @@ puts "#{Deduction.count} deductions have been created."
         present: rand(1..20),
         absent: rand(0..20),
         salary: rand(2000..5000),
-        allowance_amount: rand(1..100),
-        deduction_amount: rand(1..100),
+        allowance_amount: 0,
+        deduction_amount: 0,
         net: rand(2000..5000),
         employee_id: rand(1..10)        
     )
