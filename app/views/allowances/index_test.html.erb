@@ -1,5 +1,4 @@
 <div class="flex w-screen h-screen text-gray-800">
-	<div id="overlay" class="fixed inset-0 bg-gray-800 opacity-75 hidden"></div>	
 	<div class="flex flex-col w-56 border-r border-gray-800">
 		<button class="relative text-sm focus:outline-none group">
 			<div class="flex items-center justify-between w-full h-16 px-4 border-b border-gray-800 hover:bg-gray-800 hover:text-pink-200">
@@ -28,29 +27,28 @@
 		<div class="flex-grow p-6 overflow-auto bg-gray-700">
 			<div class="grid grid-cols-3 gap-6">
 				<% @allowances.each do |allowance| %>
-					<div  class="h-24 col-span-3 md:col-span-1 bg-white">
-						<button data-modal="<%= allowance.id%>" id="openModalButton" class="taxation-button h-full w-full">
+					<div  data-controller="modal" class="h-24 col-span-3 md:col-span-1 bg-white">
+						<button data-modal="<%= allowance.id%>" data-action="modal#open" class="taxation-button h-full w-full">
 							<div class=" flex flex-row items-center">
 								<div class="w-1/2 flex items-center justify-start mx-5 text-2xl font-bold break-all overflow-hidden"><%= allowance.name %></div>
 								<div class="w-1/2 flex items-center justify-center text-xl font-semibold break-all overflow-hidden"><%= allowance.amount %></div>
 							</div>
 						</button>
-
-						<div data-modal-target="modal" id="myModal" class="taxation-modal fixed inset-0 flex items-center justify-center hidden  allowance-modal">
-							<div class="rounded bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 relative">
+						<dialog  data-modal-target="modal" class="allowance-modal transform overflow-hidden rounded-lg bg-white backdrop:bg-gray-900 backdrop:bg-opacity-75 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+							<div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
 								<div class="sm:flex sm:items-start">
+									<button type="button" data-action="modal#close" class="absolute top-4 right-4 h-12 w-12  sm:mx-0 sm:h-10 sm:w-10">X</button>
 									<div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-									<button type="button"  class="closeModalButton absolute top-4 right-4 h-12 w-12  sm:mx-0 sm:h-10 sm:w-10">X</button>
 										<h1 class="text-base text-xl font-semibold leading-6 text-gray-800"><%= allowance.name %></h1>
 										<p class="mt-2 text-lg text-gray-500"><%= allowance.description %></p>
 									</div>
 								</div>
         						<div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
 									<button type="button" data-action="edit#update" class="inline-flex w-full justify-center rounded-md bg-gray-800 text-pink-200 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-gray-900 sm:ml-3 sm:w-auto">Edit</button>
-									<button type="button" data-action="modal#close" class=" closeModalButton mt-3 inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm ring-1 ring-inset ring-gray-800 hover:bg-gray-50 sm:mt-0 sm:w-auto">Close</button>
+									<button type="button" data-action="modal#close" class="mt-3 inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm ring-1 ring-inset ring-gray-800 hover:bg-gray-50 sm:mt-0 sm:w-auto">Close</button>
 								</div>
 							</div>
-						</div>
+						</dialog>
 					</div>
 				<% end %>
 			</div>
