@@ -1,6 +1,5 @@
 class PayslipsController < ApplicationController
-  before_action :set_payslip, only: %i[ show edit update destroy ]
-  # before_save :update_total_amount, if: :allowance_amount_changed?, only: [:update]
+  before_action :set_payslip, only: %i[ show edit update increase_present_days increase_absent_days decrease_present_days decrease_absent_days]
 
   def index
     @payslips = Payslip.all
@@ -8,7 +7,6 @@ class PayslipsController < ApplicationController
   end
 
   def show
-    # @payslip_allowances = @payslip.allowances
     @allowances = Allowance.where(payslip_id: @payslip)
     @deductions = Deduction.where(payslip_id: @payslip)
   end
@@ -30,7 +28,6 @@ class PayslipsController < ApplicationController
   
   def edit
   end
-
 
   def update
     if @payslip.update(payslip_params)
@@ -54,13 +51,33 @@ class PayslipsController < ApplicationController
   #   end
   # end
 
+  def increase_present_days
+    @payslip.update(present: @payslip.present + 1)
+    redirect_to @payslip
+  end
+
+  def decrease_present_days
+    @payslip.update(present: @payslip.present - 1)
+    redirect_to @payslip
+  end
+
+  def increase_absent_days
+    @payslip.update(absent: @payslip.absent + 1)
+    redirect_to @payslip
+  end
+
+  def decrease_absent_days
+    @payslip.update(absent: @payslip.absent - 1)
+    redirect_to @payslip
+  end
+
+
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_payslip
       @payslip = Payslip.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def payslip_params
       params.require(:payslip).permit(:present, :employee, :absent, :salary, :allowance_amount, :deduction_amount, :net, allowance_ids:[], deduction_ids:[] )
     end

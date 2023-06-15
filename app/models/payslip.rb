@@ -5,6 +5,16 @@ class Payslip < ApplicationRecord
   has_many :payslip_deductions, dependent: :destroy
   has_many :deductions, through: :payslip_deductions
 
+  validates :present, numericality: {
+    only_integer: true,
+    greater_than_or_equal_to: 0
+}
+
+validates :absent, numericality: {
+  only_integer: true,
+  greater_than_or_equal_to: 0
+}
+
   def calculate_allowances_amount
     self.allowances.sum(:amount)
   end

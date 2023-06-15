@@ -13,5 +13,12 @@ Rails.application.routes.draw do
   resources :payslip_allowances, only: [:destroy]
   resources :deductions
   resources :payslip_deductions, only: [:destroy]
-  resources :payslips
+  resources :payslips do
+    member do
+      post 'increase_present_days'
+      post 'decrease_present_days'
+      post 'increase_absent_days'
+      post 'decrease_absent_days'
+    end
+  end
 end 

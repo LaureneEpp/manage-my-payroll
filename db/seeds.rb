@@ -86,7 +86,7 @@ puts "#{Deduction.count} deductions have been created."
 10.times do
     Payslip.create!(
         present: rand(1..20),
-        absent: rand(0..20),
+        absent: rand(1..20),
         salary: rand(2000..5000),
         allowance_amount: 0,
         deduction_amount: 0,
