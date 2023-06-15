@@ -6,7 +6,7 @@
     <%= f.input :amount, input_html: { autocomplete: false } %>
   </div>
   <div class="my-3">
-    <%= button_to 'Cancel', allowances_path, class:"ml-2 rounded-md px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm ring-1 ring-inset ring-gray-800 hover:bg-gray-50 sm:mt-0 sm:w-auto" %>  
+    <%= link_to 'Cancel', allowances_path, data: { turbo: false }, class:"ml-2 rounded-md px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm ring-1 ring-inset ring-gray-800 hover:bg-gray-50 sm:mt-0 sm:w-auto" %>  
     <%= f.submit 'New', class:"ml-2 rounded-md px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm ring-1 ring-inset ring-gray-800 hover:bg-gray-50 sm:mt-0 sm:w-auto" %>
    </div>
 <% end %> 
