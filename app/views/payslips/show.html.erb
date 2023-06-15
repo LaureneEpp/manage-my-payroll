@@ -78,14 +78,21 @@
                         <span class="flex text-xl font-bold">Allowances</span>
                     </div>
                     <div class="overflow-y-auto" style="max-height: 24rem;">
-                        <div class="grid grid-cols-3 gap-3">
-                            <% @payslip.allowances.each do |a| %>
-                                <div class="flex items-center justify-center text-base  text-gray-500 bg-red-300 rounded-lg my-2 mx-2">
-                                <span class="p-2 break-all"><%= a.name %>
+                        <% if @payslip.allowances.none? %>
+                            <div class="flex items-center justify-center text-base text-gray-500  my-2 mx-2">
+                                <span class="p-2 break-all">You should add allowances
                                 </span>
-                                </div>
-                            <% end %> 
-                        </div>
+                            </div>
+                        <% else %>
+                            <div class="grid grid-cols-3 gap-3">
+                                <% @payslip.allowances.each do |a| %>
+                                    <div class="flex items-center justify-center text-base  text-gray-500 bg-red-300 rounded-lg my-2 mx-2">
+                                    <span class="p-2 break-all"><%= a.name %>
+                                    </span>
+                                    </div>
+                                <% end %> 
+                            </div>
+                        <% end %>
                     </div>
                 </div>
                 <div class="row-span-3 bg-white shadow rounded-lg">
@@ -93,14 +100,21 @@
                         <span class="flex text-xl font-bold">Deductions</span>
                     </div>
                     <div class="overflow-y-auto" style="max-height: 24rem;">
-                        <div class="grid grid-cols-3 gap-3">
-                            <% @payslip.deductions.each do |d| %>
-                                <div class="flex items-center justify-center text-base  text-gray-500 bg-red-300 rounded-lg my-2 mx-2">
-                                <span class="p-2 break-all"><%= d.name %>
+                        <% if @payslip.deductions.none? %>
+                            <div class="flex items-center justify-center text-base text-gray-500  my-2 mx-2">
+                                <span class="p-2 break-all">You should add deductions
                                 </span>
-                                </div>
-                            <% end %> 
-                        </div>
+                            </div>
+                        <% else %>
+                            <div class="grid grid-cols-3 gap-3">
+                                <% @payslip.deductions.each do |d| %>
+                                    <div class="flex items-center justify-center text-base  text-gray-500 bg-red-300 rounded-lg my-2 mx-2">
+                                    <span class="p-2 break-all"><%= d.name %>
+                                    </span>
+                                    </div>
+                                <% end %> 
+                            </div>
+                        <% end %>
                     </div>
                 </div>
             </div>

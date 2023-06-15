@@ -23,4 +23,3 @@ validates :absent, numericality: {
     self.deductions.sum(:amount)
   end
 end
-
