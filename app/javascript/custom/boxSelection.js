@@ -16,7 +16,7 @@ taxation_names.forEach(name => name.addEventListener('click', (e) => {
     });
 
     // Add active class to the target button
-    const targetButton = document.querySelector('[data-modal="' + clickedButton + '"]');
+    const targetButton = document.querySelector('[data-box="' + clickedButton + '"]');
     targetButton.classList.add('active');
   }
 } ))

@@ -1,4 +1,5 @@
 <div class="flex w-screen h-screen text-gray-800">
+<%= console %>
 	<div id="overlay" class="fixed inset-0 bg-gray-800 opacity-75 hidden"></div>	
 	<div class="flex flex-col w-56 border-r border-gray-800">
 		<button class="relative text-sm focus:outline-none group">
@@ -11,14 +12,14 @@
 		</button>
 		<div class="flex flex-col flex-grow p-4 overflow-auto">
 			<%= turbo_stream_from "allowances" %>
-				<div id="allowances" class="text-center">
-					<%= render @allowances %>
-				</div>
-				<%= link_to new_allowance_path, data: { turbo_frame: "modal" }, class:'flex justify-center' do %>
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 font-semibold text-red-800">
-						<path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
-					</svg>
-				<% end %>
+			<div id="allowances" class="text-center">
+				<%= render @allowances %>
+			</div>
+			<%= link_to new_allowance_path, data: { turbo_frame: "modal" }, class:'flex justify-center' do %>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 font-semibold text-red-800">
+					<path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
+				</svg>
+			<% end %>
 		</div>
 	</div>
 	<div class="flex flex-col flex-grow">
@@ -29,25 +30,24 @@
 			<div class="grid grid-cols-3 gap-6">
 				<% @allowances.each do |allowance| %>
 					<div  class="h-24 col-span-3 md:col-span-1 bg-white">
-						<button data-modal="<%= allowance.id%>" id="openModalButton" class="taxation-button h-full w-full">
+						<button data-box="<%= allowance.id%>" class="taxation-button h-full w-full">
 							<div class=" flex flex-row items-center">
 								<div class="w-1/2 flex items-center justify-start mx-5 text-2xl font-bold break-all overflow-hidden"><%= allowance.name %></div>
 								<div class="w-1/2 flex items-center justify-center text-xl font-semibold break-all overflow-hidden"><%= allowance.amount %></div>
 							</div>
 						</button>
-
-						<div data-modal-target="modal" id="myModal" class="taxation-modal fixed inset-0 flex items-center justify-center hidden  allowance-modal">
+						<div data-modal="<%= allowance.id%>" class="taxation-modal fixed inset-0 flex items-center justify-center hidden">
 							<div class="rounded bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 relative">
 								<div class="sm:flex sm:items-start">
 									<div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-									<button type="button"  class="closeModalButton absolute top-4 right-4 h-12 w-12  sm:mx-0 sm:h-10 sm:w-10">X</button>
+										<button type="button" class="closeModalButton absolute top-4 right-4 h-12 w-12  sm:mx-0 sm:h-10 sm:w-10">X</button>
 										<h1 class="text-base text-xl font-semibold leading-6 text-gray-800"><%= allowance.name %></h1>
 										<p class="mt-2 text-lg text-gray-500"><%= allowance.description %></p>
 									</div>
 								</div>
         						<div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-									<button type="button" data-action="edit#update" class="inline-flex w-full justify-center rounded-md bg-gray-800 text-pink-200 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-gray-900 sm:ml-3 sm:w-auto">Edit</button>
-									<button type="button" data-action="modal#close" class=" closeModalButton mt-3 inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm ring-1 ring-inset ring-gray-800 hover:bg-gray-50 sm:mt-0 sm:w-auto">Close</button>
+									<%= link_to "Edit", edit_allowance_path(allowance), data: { turbo_frame: "modal" }, class:"closeModalButton inline-flex w-full justify-center rounded-md bg-gray-800 text-pink-200 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-gray-900 sm:ml-3 sm:w-auto" %>
+									<button type="button" class="closeModalButton mt-3 inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm ring-1 ring-inset ring-gray-800 hover:bg-gray-50 sm:mt-0 sm:w-auto">Close</button>
 								</div>
 							</div>
 						</div>
@@ -57,3 +57,4 @@
 		</div>
 	</div>
 </div>
+
