@@ -7,7 +7,7 @@ const allowance_modals = document.querySelectorAll('.allowance-modal');
 // if click on allowance name in side bar 
 taxation_names.forEach(name => name.addEventListener('click', (e) => {
     const clickedButton = name.dataset.taxation;
-    console.log(clickedButton);
+    // console.log(clickedButton);
       // Check if the clicked element has the data-btn attribute
   if (clickedButton) {
     // Remove active class from all buttons
