@@ -10,28 +10,31 @@ const subMenu = document.querySelector("#submenu");
 
 // Function to open SidebarMenu
 function openSidebarMenu() {
-  sideMenu.classList.add('translate-x-[-100%]');
+  sideMenu.classList.remove('translate-x-[-100%]');
+  console.log('Test to open modal')
 }
 
 // Function to close SidebarMenu
 function closeSidebarMenu() {
   sideMenu.classList.add('translate-x-[-100%]');
   main_container.style.marginLeft = '';
+  console.log('Test to close modal')
 }
 // Function dropdown for subMenu
 function dropdown() {
   subMenu.classList.toggle("hidden");
   arrow.classList.toggle("rotate-0");
+  console.log('Test to dropdown menu')
 }
 
 // Function toggle fixed menu
 function toggleFixedMenu() {
   if (!sideMenu.classList.contains('translate-x-[-100%]')) {
-    main_container.classList.remove('ml-0');
+    main_container.classList.toggle('ml-0');
     main_container.style.marginLeft = "300px";
     console.log('Test for toggleFixedMenu');
   } else {
-    main_container.classList.add('ml-0');
+    main_container.classList.toggle('ml-0');
     main_container.style.marginLeft = '';
   }
 }
@@ -46,3 +49,6 @@ close_icon.addEventListener('click', closeSidebarMenu);
 
 // Toggle fixed menu on bookmark icon
 bookmark_icon.addEventListener('click', toggleFixedMenu);
+
+// Toggle fixed menu on bookmark icon
+arrow.addEventListener('click', dropdown);

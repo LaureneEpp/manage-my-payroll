@@ -12,12 +12,12 @@
   </head>
 
   <body class="bg-rose-200 text-gray-900">
-  <div class="flex">
+  
       <%= render 'layouts/navigation' %>
       <main class="main-container mx-auto max-w-7xl pt-10 ml-0 min-h-screen h-full">
           <%= turbo_frame_tag "modal" %>
           <%= yield %>
       </main>
-  </div>
+
   </body>
 </html>
