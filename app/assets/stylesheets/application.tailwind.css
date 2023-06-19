@@ -11,5 +11,5 @@
 }
 
 */
-@import "./config/reset.css";
+@import "./config/resets.css";
 @import "./components/modal.css";
