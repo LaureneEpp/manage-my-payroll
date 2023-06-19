@@ -8,6 +8,23 @@ const sideMenu = document.querySelector('.sidebar');
 const subMenu = document.querySelector("#submenu");
 // var w = document.documentElement.clientWidth || window.innerWidth;
 
+// Function hideMenuIcon
+// function hideShowMenuIcon(event) {
+//   // Récupérez les coordonnées de la souris
+//   const mouseX = event.clientX;
+//   const mouseY = event.clientY;
+
+//   // Vérifiez si la souris est dans l'angle supérieur gauche de l'écran
+//   if (mouseX <= 50 && mouseY <= 50) {
+//     // Affichez le bouton
+//     menu_icon.classList.replace("block", "hidden");
+//   } else {
+//     // Masquez le bouton
+//     menu_icon.classList.replace("hidden", "block");
+//   }
+// }
+
+
 // Function to open SidebarMenu
 function openSidebarMenu() {
   sideMenu.classList.remove('translate-x-[-100%]');
@@ -38,6 +55,9 @@ function toggleFixedMenu() {
     main_container.style.marginLeft = '';
   }
 }
+
+// Make menu Icon appears
+// window.addEventListener('mousemove', hideShowMenuIcon)
 
 // Open menu when click on menu icon
 menu_icon.addEventListener('click', () => {
