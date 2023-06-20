@@ -27,13 +27,13 @@ var isScrolling;
 
 // Function to open SidebarMenu
 function openSidebarMenu() {
-  sideMenu.classList.remove('translate-x-[-100%]');
+  sideMenu.classList.toggle('translate-x-[-100%]');
   console.log('Test to open modal')
 }
 
 // Function to close SidebarMenu
 function closeSidebarMenu() {
-  sideMenu.classList.add('translate-x-[-100%]');
+  sideMenu.classList.toggle('translate-x-[-100%]');
   main_container.style.marginLeft = '';
   console.log('Test to close modal')
 }
@@ -55,30 +55,6 @@ function toggleFixedMenu() {
     main_container.style.marginLeft = '';
   }
 }
-
-
-// Afficher le bouton dans l'angle supérieur gauche
-function showButton() {
-  menu_icon.classList.remove('hidden');
-}
-
-// Masquer le bouton dans l'angle supérieur gauche
-function hideButton() {
-  menu_icon.classList.add('hidden');
-}
-
-// Événement de scroll du conteneur de contenu
-main_container.addEventListener('scroll', function () {
-  console.log('scrolling...')
-  // clearTimeout(isScrolling);
-  // hideButton();
-})
-
-  // Déterminer si le scroll est arrêté après 200 millisecondes
-//   isScrolling = setTimeout(function() {
-//     showButton();
-//   }, 200);
-// });
 
 // Make menu Icon appears
 // window.addEventListener('mousemove', hideShowMenuIcon)
