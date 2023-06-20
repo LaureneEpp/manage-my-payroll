@@ -41,8 +41,8 @@
                   <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
                     <%= image_tag(employee.avatar) %>
                   </div>
-                  <span class="text-gray-600"><%= link_to employee.fullname, employee_path(employee) %></span>
-                  <span class="ml-auto font-semibold"><%= employee.departement.name %></span>
+                  <span class="flex-1 w-1/2 break-words text-gray-600"><%= link_to employee.fullname, employee_path(employee) %></span>
+                  <span class="flex-1 w-1/2 break-words  ml-auto font-semibold"><%= employee.departement.name %></span>
                 </li>
               <% end %>
             </ul>

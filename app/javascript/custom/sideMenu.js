@@ -6,23 +6,23 @@ const main_container = document.querySelector(".main-container");
 const menu_icon = document.querySelector('.menu-icon');
 const sideMenu = document.querySelector('.sidebar');
 const subMenu = document.querySelector("#submenu");
+var isScrolling;
 // var w = document.documentElement.clientWidth || window.innerWidth;
 
 // Function hideMenuIcon
-// function hideShowMenuIcon(event) {
-//   // Récupérez les coordonnées de la souris
-//   const mouseX = event.clientX;
-//   const mouseY = event.clientY;
+// menu_icon.addEventListener('mouseenter', function() {
+//   menu_icon.style.display = 'none';
+// });
 
-//   // Vérifiez si la souris est dans l'angle supérieur gauche de l'écran
-//   if (mouseX <= 50 && mouseY <= 50) {
-//     // Affichez le bouton
-//     menu_icon.classList.replace("block", "hidden");
+// document.addEventListener('mousemove', function(event) {
+//   var mouseX = event.clientX;
+//   var mouseY = event.clientY;
+//   if (mouseX <= 40 && mouseY <= 40) {
+//     menu_icon.style.display = 'block';
 //   } else {
-//     // Masquez le bouton
-//     menu_icon.classList.replace("hidden", "block");
+//     menu_icon.style.display = 'none';
 //   }
-// }
+// });
 
 
 // Function to open SidebarMenu
@@ -55,6 +55,30 @@ function toggleFixedMenu() {
     main_container.style.marginLeft = '';
   }
 }
+
+
+// Afficher le bouton dans l'angle supérieur gauche
+function showButton() {
+  menu_icon.classList.remove('hidden');
+}
+
+// Masquer le bouton dans l'angle supérieur gauche
+function hideButton() {
+  menu_icon.classList.add('hidden');
+}
+
+// Événement de scroll du conteneur de contenu
+main_container.addEventListener('scroll', function () {
+  console.log('scrolling...')
+  // clearTimeout(isScrolling);
+  // hideButton();
+})
+
+  // Déterminer si le scroll est arrêté après 200 millisecondes
+//   isScrolling = setTimeout(function() {
+//     showButton();
+//   }, 200);
+// });
 
 // Make menu Icon appears
 // window.addEventListener('mousemove', hideShowMenuIcon)
