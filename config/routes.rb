@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'pages#dashboard' # shortcut for the abov
   resources :employees
   resources :departements, only: [:index, :show] do
-    resources :teams, only: [:index, :show]
+    resources :teams, only: [:show]
   end
   
   resources :allowances
@@ -17,4 +17,5 @@ Rails.application.routes.draw do
       post 'decrease_absent_days'
     end
   end
+  resources :teams, only: [:index]
 end 

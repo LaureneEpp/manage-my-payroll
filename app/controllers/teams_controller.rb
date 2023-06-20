@@ -1,12 +1,13 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: %i[ show ]
-  before_action :set_departement, 
+  before_action :set_departement, only: %i[ show ]
 
   def index
     @teams = Team.all.order('name ASC')
   end
 
   def show
+    @team_manager = Employee.find_by(team_id: @team, manager: true)
   end
 
   private

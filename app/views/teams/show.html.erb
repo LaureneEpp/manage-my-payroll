@@ -1,4 +1,63 @@
-<div>
-  <h1 class="font-bold text-4xl">Teams#show</h1>
-  <p>Find me in app/views/teams/show.html.erb</p>
+<div class="flex flex-col h-screen justify-center items-center text-center">
+    <div class="flex flex-col items-center my-3">
+        <div class="py-12 flex flex-col items-center">
+            <h1 class="font-serif text-2xl font-extrabold tracking-widest uppercase"><%= @team.name %></h1>
+            <h2 class="font-serif text-1xl font-extrabold tracking-widest"><%= @team.departement.name %></h2>
+        </div>
+    </div>
+    <div class="flex flex-col overflow-y-auto px-5 py-3">
+        <div class="flex flex-col my-3">
+            <span class="flex items-start my-4 mx-2 text-2xl font-light ">Description</span>
+            <section class="grid grid-cols-1 my-3 ">
+                <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div>
+                        <span class="flex items-start text-gray-500"><%=  @team.description %></span>
+                    </div>
+                </div>
+            </section>
+            <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+                <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-800 bg-green-200 rounded-full mr-6">
+                        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="flex text-xl font-bold">Members</span>
+                        <span class="flex items-start text-gray-500"><%= @team.employees.count%></span>
+                    </div>
+                </div>
+                <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-800 bg-green-200 rounded-full mr-6">
+                        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="flex text-xl font-bold">Manager</span>
+                        <span class="flex items-start text-gray-500"><%= @team_manager.first_name %> <%= @team_manager.last_name %></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="flex flex-col my-3">
+            <span class="flex items-start my-4 mx-2 text-2xl font-light ">Team members</span>
+        <div class="row-span-3 bg-white shadow rounded-lg">
+          <div class="overflow-y-auto" style="max-height: 24rem;">
+            <ul class="p-6 space-y-6">
+              <% @team.employees.each do |employee| %>
+                <li class="flex items-center">
+                  <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                    <%= image_tag(employee.avatar) %>
+                  </div>
+                  <span class="flex-1 w-1/2 break-words text-gray-600"><%= link_to employee.fullname, employee_path(employee) %></span>
+                  <span class="flex-1 w-1/2 break-words text-end  ml-auto font-semibold"><%= employee.departement.name %></span>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        </div>
+
+    </div>
 </div>

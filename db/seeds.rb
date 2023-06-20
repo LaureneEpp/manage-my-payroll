@@ -32,20 +32,20 @@ end
 puts "#{Departement.count} departments have been created."
 
 # 15.times do 
-#     Team.create(name: Faker::Lorem.word, departement_id: rand(1..10))
+#     Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: rand(1..10))
 # end
 
 2.times do 
-    Team.create(name: Faker::Lorem.word, departement_id: 1)
-    Team.create(name: Faker::Lorem.word, departement_id: 2)
-    Team.create(name: Faker::Lorem.word, departement_id: 3)
-    Team.create(name: Faker::Lorem.word, departement_id: 4)
-    Team.create(name: Faker::Lorem.word, departement_id: 5)
-    Team.create(name: Faker::Lorem.word, departement_id: 6)
-    Team.create(name: Faker::Lorem.word, departement_id: 7)
-    Team.create(name: Faker::Lorem.word, departement_id: 8)
-    Team.create(name: Faker::Lorem.word, departement_id: 9)
-    Team.create(name: Faker::Lorem.word, departement_id: 10)    
+    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 1)
+    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 2)
+    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 3)
+    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 4)
+    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 5)
+    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 6)
+    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 7)
+    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 8)
+    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 9)
+    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 10)    
 end
 
 puts "#{Team.count} teams have been created."
