@@ -10,7 +10,6 @@ class TeamsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_departement
     @departement = Departement.find(params[:departement_id])
   end

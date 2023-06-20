@@ -38,19 +38,6 @@ class PayslipsController < ApplicationController
     end
   end
 
-  # def update
-  #   respond_to do |format|
-  #     if @payslip.update(payslip_params)
-  #       format.turbo_stream
-  #       format.html { redirect_to payslip_url(@payslip), notice: "payslip was successfully updated." }
-  #       format.json { render :show, status: :ok, location: @payslip }
-  #     else
-  #       format.html { render :edit, status: :unprocessable_entity }
-  #       format.json { render json: @payslip.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
   def increase_present_days
     @payslip.update(present: @payslip.present + 1)
     redirect_to @payslip
