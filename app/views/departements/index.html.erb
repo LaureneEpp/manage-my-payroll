@@ -1,12 +1,13 @@
-<div class="wrapper p-6 sm:p-10 space-y-6 relative z-10" data-controller="modal">
+<div class="wrapper p-6 sm:p-10 space-y-6 relative z-10">
+<div id="overlay" class="fixed inset-0 bg-gray-800 opacity-75 hidden"></div>
   <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
     <div class="mr-6">
       <h1 class="text-4xl font-semibold mb-2">Departments</h1>
     </div>
   </div>
   <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6" >
-    <% @hash_departement_teams.each_pair do |d, t| %>
-      <button data-action="modal#open" class="btn-ouline box flex items-center p-8 bg-white shadow rounded-lg">
+    <% @departements.each do |d| %>
+      <button data-box="<%= d.id%>" class="taxation-button btn-ouline box flex items-center p-8 bg-white shadow rounded-lg">
           <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
               <path fill-rule="evenodd" d="M1.5 7.125c0-1.036.84-1.875 1.875-1.875h6c1.036 0 1.875.84 1.875 1.875v3.75c0 1.036-.84 1.875-1.875 1.875h-6A1.875 1.875 0 011.5 10.875v-3.75zm12 1.5c0-1.036.84-1.875 1.875-1.875h5.25c1.035 0 1.875.84 1.875 1.875v8.25c0 1.035-.84 1.875-1.875 1.875h-5.25a1.875 1.875 0 01-1.875-1.875v-8.25zM3 16.125c0-1.036.84-1.875 1.875-1.875h5.25c1.036 0 1.875.84 1.875 1.875v2.25c0 1.035-.84 1.875-1.875 1.875h-5.25A1.875 1.875 0 013 18.375v-2.25z" clip-rule="evenodd" />
@@ -16,17 +17,28 @@
             <span class="block text-2xl font-bold"><%= d.name %></span>
           </div>
       </button>
-      <dialog data-modal-target="modal" class="p-8 bg-transparent backdrop:bg-gray-800 backdrop:bg-opacity-75 ">
-          <button type="button" data-action="modal#close" class="absolute top-4 right-4">X</button>
-          <h1 class="uppercase text-white font-bold text-xl"><%= d.teams.count %> teams in <%= d.name %></h1>
-          <div class="teams flex flex-col md:flex-row items-center">
-              <% t.each do |n| %>
-                <div class="circle-team rounded-full bg-gray-800 text-pink-200 w-48 h-48 flex align-center justify-center items-center my-3 mx-3">
-                  <h2 class="text-xl font-semibold"><%= link_to n.name, departement_team_path(d.id, n) %></h2>
-                </div>
-              <% end %>
-          </div>
-      </dialog>
+			<div data-modal="<%= d.id%>" class="taxation-modal fixed inset-0 flex flex-col items-center justify-center p-8 hidden">
+        <div class="bg-none p-4">
+          <button type="button" class="closeModalButton sm:mx-0 w-full text-white font-wold text-xl flex justify-end py-3 my-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <h1 class="uppercase text-start text-white font-bold text-xl"><%= d.teams.count %> teams in <%= d.name %></h1>
+
+        <div class="teams flex flex-col md:flex-row items-center">
+					<div class="sm:flex sm:items-start">
+            <% d.teams.each do |t| %>
+              <div class="circle-team rounded-full bg-gray-800 text-pink-200 w-48 h-48 flex align-center justify-center items-center my-3 mx-3">
+                <h2 class="text-xl font-semibold"><%= link_to t.name, departement_team_path(d.id, t) %></h2>
+              </div>
+            <% end %>
+					</div>
+			  </div>
+        </div>
+			</div>
+
     <% end %>
   </div>
 </div>
+
