@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: %i[ show edit update destroy ]
+  
 
   require "mini_magick"
 
@@ -21,14 +22,10 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
 
-    respond_to do |format|
-      if @employee.save
-        format.html { redirect_to employee_url(@employee), notice: "Employee was successfully created." }
-        format.json { render :show, status: :created, location: @employee }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @employee.errors, status: :unprocessable_entity }
-      end
+    if @employee.save
+      redirect_to employee_path(@employee), notice: 'Employee was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -61,6 +58,6 @@ class EmployeesController < ApplicationController
     end
 
     def employee_params
-      params.require(:employee).permit(:first_name, :last_name, :email, :manager, :team, :position, :city, :country, :avatar)
+      params.require(:employee).permit(:first_name, :last_name, :email, :manager, :team_id, :position_id, :city, :country, :avatar)
     end
 end
