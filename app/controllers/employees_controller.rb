@@ -30,17 +30,25 @@ class EmployeesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @employee.update(employee_params)
-        format.turbo_stream
-        format.html { redirect_to employee_url(@employee), notice: "employee was successfully updated." }
-        format.json { render :show, status: :ok, location: @employee }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @employee.errors, status: :unprocessable_entity }
-      end
+    if @employee.update(employee_params)
+      redirect_to employee_path(@employee), notice: "Employee was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
+
+  # def update
+  #   respond_to do |format|
+  #     if @employee.update(employee_params)
+  #       format.turbo_stream
+  #       format.html { redirect_to employee_url(@employee), notice: "employee was successfully updated." }
+  #       format.json { render :show, status: :ok, location: @employee }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json { render json: @employee.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
 
   def destroy
