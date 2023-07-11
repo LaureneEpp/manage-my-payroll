@@ -49,6 +49,7 @@
         <div class="row-span-3 bg-white shadow rounded-lg">
           <div class="overflow-y-auto" style="max-height: 24rem;">
             <ul class="p-6 space-y-6">
+            <% if @team.employees.present? %>
               <% @team.employees.each do |employee| %>
                 <li class="flex items-center">
                   <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
@@ -58,7 +59,11 @@
                   <span class="flex-1 w-1/2 break-words text-end  ml-auto font-semibold"><%= employee.departement.name %></span>
                 </li>
               <% end %>
+            <% else %>
+            <span class="font-semibold">You need to add members to this team</span>
+            <% end %>
             </ul>
+            
           </div>
         </div>
         </div>
