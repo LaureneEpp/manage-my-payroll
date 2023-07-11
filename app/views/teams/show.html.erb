@@ -35,7 +35,11 @@
                     </div>
                     <div>
                         <span class="flex text-xl font-bold">Manager</span>
-                        <span class="flex items-start text-gray-500"><%= @team_manager.first_name %> <%= @team_manager.last_name %></span>
+                        <% if @team_manager.present? %>
+                            <span class="flex items-start text-gray-500"><%= @team_manager.first_name.capitalize %> <%= @team_manager.last_name.capitalize %></span>
+                        <% else %>
+                            <span class="flex items-start text-gray-500 break-words">Who is it?</span>
+                        <% end %>
                     </div>
                 </div>
             </section>
