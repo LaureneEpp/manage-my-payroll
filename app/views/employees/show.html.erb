@@ -4,8 +4,8 @@
             <%= image_tag (@employee.avatar_thumbnail), class:'rounded-full'  %>
         <% end %>
         <div class="py-12 flex flex-col items-center">
-            <h1 class="font-serif text-2xl font-extrabold tracking-widest uppercase"><%= @employee.fullname %></h1>
-            <h2 class="font-serif text-1xl font-extrabold tracking-widest"><%= @employee.departement.name %></h2>
+            <h1 class="font-serif text-2xl font-extrabold tracking-widest uppercase"><%= @employee.fullname.capitalize %></h1>
+            <h2 class="font-serif text-1xl font-extrabold tracking-widest"><%= @employee.departement.name.capitalize %></h2>
             <%= link_to edit_employee_path(@employee), data: { turbo_frame: "modal" } do %>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 font-serif text-1xl font-extrabold tracking-widest text-red-400">
                 <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
@@ -27,7 +27,7 @@
                     </div>
                     <div>
                         <span class="flex text-xl font-bold">Location</span>
-                        <span class="flex items-start text-gray-500"><%= @employee.city %>|<%= @employee.country %></span>
+                        <span class="flex items-start text-gray-500"><%= @employee.city.capitalize %>|<%= @employee.country %></span>
                     </div>
                 </div>
                 <div class="flex items-center p-8 bg-white shadow rounded-lg">
@@ -38,7 +38,7 @@
                     </div>
                     <div>
                         <span class="flex text-xl font-bold">Email</span>
-                        <span class="flex items-start text-gray-500"><%= @team_manager %></span>
+                        <span class="flex items-start text-gray-500"><%= @employee.email.downcase %></span>
                     </div>
                 </div>
             </section>
