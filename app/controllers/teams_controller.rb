@@ -10,6 +10,20 @@ class TeamsController < ApplicationController
     @team_manager = Employee.find_by(team_id: @team, manager: true)
   end
 
+  def new
+    @team = Team.new
+  end
+
+  def create
+    @team = Team.new(team_params)
+
+    if @team.save
+      redirect_to departements_path, notice: 'A new team was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   private
   def set_departement
     @departement = Departement.find(params[:departement_id])

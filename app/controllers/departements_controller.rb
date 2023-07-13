@@ -3,7 +3,7 @@ class DepartementsController < ApplicationController
 
   def index
     @departements = Departement.all.order('name ASC')
-
+    Team.new
   end
 
   def show

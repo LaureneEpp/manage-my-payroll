@@ -17,5 +17,5 @@ Rails.application.routes.draw do
       post 'decrease_absent_days'
     end
   end
-  resources :teams, only: [:index]
+  resources :teams, only: [:index, :new, :create]
 end 

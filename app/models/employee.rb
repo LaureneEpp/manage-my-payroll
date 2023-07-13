@@ -9,7 +9,7 @@ class Employee < ApplicationRecord
   after_commit :add_default_avatar, on: %i[create update]
 
   def fullname
-    "#{first_name} #{last_name}"
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
   def avatar_thumbnail

@@ -1,0 +1,13 @@
+<%= simple_form_for @team, remote: true, html: { class: " p-2 mt-3"}, data: { turbo_frame: "_top" } do |f| %>
+  <div class="form-inputs">
+    <%= f.input :name, input_html: { autocomplete: false }, label_html: { class: 'py-2'}  %>
+    <%= f.input :description, input_html: { autocomplete: false }, label_html: { class: 'py-2'}  %>
+    <div class="flex flex-col my-4">
+      <%= f.collection_select :departement_id, Departement.all, :id, :name, prompt: "Select a departement", wrapper_html: { class: 'py-2'}   %>
+    </div>
+  </div>
+  <div class="px-4 py-3 sm:flex sm:flex-row sm:px-6">
+    <%= link_to 'Cancel', departements_path, data: { turbo: false }, class:"ml-2 rounded-md px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm ring-1 ring-inset ring-gray-800 hover:bg-gray-50 sm:mt-0 sm:w-auto" %>  
+    <%= f.submit 'Ok?', class:"ml-2 rounded-md px-3 py-2 text-sm font-semibold text-gray-800 shadow-sm ring-1 ring-inset ring-gray-800 hover:bg-gray-50 sm:mt-0 sm:w-auto" %>
+  </div>
+<% end %>
