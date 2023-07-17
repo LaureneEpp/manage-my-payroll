@@ -37,7 +37,7 @@
               <% @employees.each do |employee| %>
                 <li class="flex items-center">
                   <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                    <%= image_tag(employee.avatar) %>
+                    <%= image_tag(employee.avatar, class: "w-full h-full object-cover") %>
                   </div>
                   <span class="flex-1 w-1/2 break-words text-gray-600"><%= link_to employee.fullname, employee_path(employee) %></span>
                   <span class="flex-1 w-1/2 break-words text-end  ml-auto font-semibold"><%= employee.departement.name %></span>
@@ -55,10 +55,30 @@
               <% @managers.each do |manager| %>
                 <li class="flex items-center">
                   <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                    <%= image_tag(manager.avatar) %>
+                    <%= image_tag(manager.avatar, class: "w-full h-full object-cover") %>
                   </div>
                   <span class="flex-1 w-1/2 break-words text-gray-600"><%= link_to manager.fullname, employee_path(manager) %></span>
                   <span class="flex-1 w-1/2 break-words ml-auto font-semibold text-end"><%= manager.departement.name %></span>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
+        <div class="row-span-3 bg-teal-500 shadow rounded-lg">
+          <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
+            <span class="font-semibold">FOR ACTION - Information to be defined</span>
+          </div>
+          <div class="overflow-y-auto" style="max-height: 24rem;">
+            <ul class="p-6 space-y-6">
+              <% @tbd_employees.each do |employee| %>
+                <li class="flex items-center">
+                  <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                    <%= image_tag(employee.avatar, class: "w-full h-full object-cover") %>
+                  </div>
+                  <span class="flex-1 w-1/2 break-words text-gray-600"><%= link_to employee.fullname, employee_path(employee) %></span>
+                  <span class="flex-1 w-1/2 break-words text-end  ml-auto font-semibold"><%= employee.departement.name %></span>
                 </li>
               <% end %>
             </ul>
