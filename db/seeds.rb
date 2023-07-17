@@ -25,7 +25,9 @@ puts "Payslips deleted"
 
 puts "🌱 Seeding..."
 
-10.times do 
+Departement.create(name: 'TBD')
+
+10.times do
     Departement.create(name: Faker::Company.department)
 end
 
@@ -35,8 +37,9 @@ puts "#{Departement.count} departments have been created."
 #     Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: rand(1..10))
 # end
 
-2.times do 
-    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 1)
+Team.create(name: 'TBD', description: 'Abc', departement_id: 1)
+
+1.times do 
     Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 2)
     Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 3)
     Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 4)
@@ -45,12 +48,15 @@ puts "#{Departement.count} departments have been created."
     Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 7)
     Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 8)
     Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 9)
-    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 10)    
+    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 10)
+    Team.create(name: Faker::Lorem.word, description: Faker::Lorem.sentences(number: 3), departement_id: 11)    
 end
 
 puts "#{Team.count} teams have been created."
 
-20.times do 
+# Position.create(name: 'To be defined')
+
+10.times do 
     Position.create!(name: Faker::Company.profession)
 end
 
@@ -63,8 +69,8 @@ puts "#{Position.count} positions have been created."
         last_name: Faker::Name.last_name,
         email: Faker::Internet.email, 
         manager: Faker::Boolean.boolean,
-        team_id: rand(1..20),
-        position_id: rand(1..20), 
+        team_id: rand(1..11),
+        position_id: rand(1..11), 
         city: Faker::Address.city, 
         country: Faker::Address.country
     )

@@ -6,10 +6,10 @@
     <%= f.input :city, input_html: { autocomplete: false }, label_html: { class: 'py-2'}  %>
     <%= f.input :country, priority: [ "Belgium" ], input_html: { autocomplete: false }, label_html: { class: 'py-2'}  %>
     <div class="flex flex-col my-4">
-      <%= f.collection_select :team_id, Team.all, :id, :name, prompt: "Select a team", wrapper_html: { class: 'py-2'}   %>
-      <%= f.collection_select :position_id, Position.all, :id, :name, prompt: "Select a position" %>
-      <h2 class="py-2 font-semibold">Is the new emmployee a manager?</h2>
-      <%= f.collection_check_boxes :manager, [[true, 'Yes'], [false, 'No']], :first, :last, wrapper_html: {class:"flex flex-row"} %>
+      <%= f.collection_select :team_id, Team.all, :id, :name, prompt: "Select a team", default: 'To be defined', wrapper_html: { class: 'py-2'}, required: false   %>
+      <%= f.collection_select :position_id, Position.all, :id, :name, prompt: "Select a position", default: 'To be defined', required: false %>
+      <h2 class="py-2 font-semibold">Is the new employee a manager?</h2>
+      <%= f.input :manager, as: :boolean, default: false, input_html: { unchecked: false } %>
     </div>
   </div>
   <div class="px-4 py-3 sm:flex sm:flex-row sm:px-6">

@@ -1,6 +1,8 @@
 class Team < ApplicationRecord
     has_many :employees
     belongs_to :departement
+
+    validates :name, uniqueness: true
     # enum :name, { 
     #     "HR": 0, 
     #     "Accounting": 1,
