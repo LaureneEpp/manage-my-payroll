@@ -1,18 +1,22 @@
-<div class="flex h-screen w-screen text-gray-800">
+<div class="flex w-screen h-screen w-screen text-gray-800 pt-12">
 	<div id="overlay" class="fixed inset-0 bg-gray-800 opacity-75 hidden"></div>	
 	<div class="flex flex-col w-56 border-r border-gray-800">
 		<button class="relative text-sm focus:outline-none group">
 			<div class="flex items-center justify-between w-full h-16 px-4 border-b border-gray-800 hover:bg-gray-800 hover:text-pink-200">
-				<span class="font-medium">deductions</span> 
-				<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-					<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+				<span class="text-base font-medium">deductions</span> 
+				<span class="text-sm" id="arrow">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6" id="arrow-deductions">
+					<path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clip-rule="evenodd" />
 				</svg>
+				</span>
 			</div>
 		</button>
 		<div class="flex flex-col flex-grow p-4 overflow-auto">
-			<%= turbo_stream_from "deductions" %>
-			<div id="deductions" class="text-center">
-				<%= render @deductions %>
+			<div id="sub-deductions">
+				<%= turbo_stream_from "deductions" %>
+				<div id="deductions" class="text-center">
+					<%= render @deductions %>
+				</div>
 			</div>
 			<%= link_to new_deduction_path, data: { turbo_frame: "modal" }, class:'flex justify-center' do %>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 font-semibold text-red-800">

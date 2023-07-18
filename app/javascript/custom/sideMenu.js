@@ -6,23 +6,7 @@ const main_container = document.querySelector(".main-container");
 const menu_icon = document.querySelector('.menu-icon');
 const sideMenu = document.querySelector('.sidebar');
 const subMenu = document.querySelector("#submenu");
-// var isScrolling;
 // var w = document.documentElement.clientWidth || window.innerWidth;
-
-// Function hideMenuIcon
-// menu_icon.addEventListener('mouseenter', function() {
-//   menu_icon.style.display = 'none';
-// });
-
-// document.addEventListener('mousemove', function(event) {
-//   var mouseX = event.clientX;
-//   var mouseY = event.clientY;
-//   if (mouseX <= 40 && mouseY <= 40) {
-//     menu_icon.style.display = 'block';
-//   } else {
-//     menu_icon.style.display = 'none';
-//   }
-// });
 
 
 // Function to open SidebarMenu
@@ -41,7 +25,7 @@ function closeSidebarMenu() {
 // Function dropdown for subMenu
 function dropdown() {
   subMenu.classList.toggle("hidden");
-  arrow.classList.toggle("rotate-0");
+  arrow.classList.toggle("rotate-180");
   console.log('Test to dropdown menu')
 }
 
