@@ -1,21 +1,23 @@
-<div class="wrapper h-screen p-6 sm:p-10 space-y-6 relative">
+<div class="flex flex-col p-6 sm:p-10 space-y-6 relative h-screen w-screen">
   <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between my-3">
       <h1 class="text-4xl font-semibold mb-2">Employees Dashboard</h1>
       <%= link_to 'Create new employee', new_employee_path, data: { turbo_frame: "modal" }, class:'flex justify-center bg-red-500 hover:bg-red-700 font-bold py-2 px-4 rounded' %>
   </div>
-  <div class="grid md:grid-cols-2 xl:grid-cols-4 gap- py-6" >
-    <% @employees.each do |e| %>
-      <button data-box="<%= e.id%>" class="taxation-button btn-ouline box flex items-center p-8 bg-white shadow rounded-lg">
-          <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
-              <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
-            </svg>
-          </div>
-          <div class="text-start">   
-            <span class="block text-2xl font-bold"><%= link_to e.fullname, e %></span>
-            <span class="block text-gray-500"><%= e.team.name %></span>
-          </div>
-      </button>
-    <% end %>
+  <div class="flex flex-col overflow-y-auto px-5 py-3">
+    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6 py-6" >
+      <% @employees.each do |e| %>
+        <button data-box="<%= e.id%>" class="taxation-button btn-ouline box flex items-center p-8 bg-white shadow rounded-lg">
+            <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+                <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="text-start">   
+              <span class="block text-2xl font-bold"><%= link_to e.fullname, e %></span>
+              <span class="block text-gray-500"><%= e.team.name %></span>
+            </div>
+        </button>
+      <% end %>
+    </div>
   </div>
 </div>
