@@ -6,7 +6,7 @@ const main_container = document.querySelector(".main-container");
 const menu_icon = document.querySelector('.menu-icon');
 const sideMenu = document.querySelector('.sidebar');
 const subMenu = document.querySelector("#submenu");
-var isScrolling;
+// var isScrolling;
 // var w = document.documentElement.clientWidth || window.innerWidth;
 
 // Function hideMenuIcon
@@ -35,6 +35,7 @@ function openSidebarMenu() {
 function closeSidebarMenu() {
   sideMenu.classList.toggle('translate-x-[-100%]');
   main_container.style.marginLeft = '';
+  bookmark_icon.style.fill = 'none';
   console.log('Test to close modal')
 }
 // Function dropdown for subMenu
@@ -49,7 +50,9 @@ function toggleFixedMenu() {
   if (!sideMenu.classList.contains('translate-x-[-100%]')) {
     main_container.classList.toggle('ml-0');
     main_container.style.marginLeft = "300px";
+    bookmark_icon.style.fill = 'red';
     console.log('Test for toggleFixedMenu');
+
   } else {
     main_container.classList.toggle('ml-0');
     main_container.style.marginLeft = '';
