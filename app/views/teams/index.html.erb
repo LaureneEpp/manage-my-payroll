@@ -1,10 +1,10 @@
-<div class="wrapper p-6 sm:p-10 space-y-6 relative z-10">
+<div class="wrapper h-scren p-6 sm:p-10 space-y-6 relative z-10">
   <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between my-3">
     <div class="mr-6">
       <h1 class="text-4xl font-semibold mb-2">Teams Dashboard</h1>
     </div>
   </div>
-  <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6" >
+  <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6 py-6" >
     <% @teams.each do |t| %>
       <button data-box="<%= t.id%>" class="taxation-button btn-ouline box flex items-center p-8 bg-white shadow rounded-lg">
           <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
