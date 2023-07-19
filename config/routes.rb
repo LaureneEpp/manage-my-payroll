@@ -11,11 +11,14 @@ Rails.application.routes.draw do
   resources :payslip_deductions, only: [:destroy]
   resources :payslips do
     member do
+      get 'dowload'
+      get 'preview'
       post 'increase_present_days'
       post 'decrease_present_days'
       post 'increase_absent_days'
       post 'decrease_absent_days'
     end
   end
+  get 'payslips/pdf/:id', to: 'payslips#generate_payslip', as: 'generate_payslip'
   resources :teams, only: [:index, :new, :create]
 end 
