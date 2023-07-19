@@ -1,0 +1,10 @@
+body {
+    background-color: green;
+  }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  } 
+  table {
+    width: 100%;
+  }
