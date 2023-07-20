@@ -25,6 +25,15 @@ class Employee < ApplicationRecord
   def tbd_position?
     self.position.name == 'TBD'
   end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[first_name last_name]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["avatar_attachment", "avatar_blob", "departement", "payslip", "position", "team"]
+  end
+
   private
 
   def add_default_avatar

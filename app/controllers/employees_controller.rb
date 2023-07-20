@@ -1,11 +1,12 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: %i[ show edit update destroy ]
-  
 
   require "mini_magick"
 
   def index
-    @employees = Employee.all.order('last_name ASC')
+    # @employees = Employee.all.order('last_name ASC')
+    @q = Employee.ransack(params[:q])
+    @employees = @q.result(distinct: true).order('last_name ASC')
   end
 
   def show
