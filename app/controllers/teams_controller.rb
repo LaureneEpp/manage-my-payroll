@@ -25,6 +25,7 @@ class TeamsController < ApplicationController
   end
 
   private
+  
   def set_departement
     @departement = Departement.find(params[:departement_id])
   end
