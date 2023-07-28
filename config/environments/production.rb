@@ -20,11 +20,11 @@ Rails.application.configure do
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
 
-  if defined?(Rake) && Rake.respond_to?(:application) && Rake.application.respond_to?(:top_level_tasks)
-    config.require_master_key = true if Rake.application.top_level_tasks.none? { |task| task.start_with?('assets:') }
-  else
-    config.require_master_key = true
-  end
+  # if defined?(Rake) && Rake.respond_to?(:application) && Rake.application.respond_to?(:top_level_tasks)
+  #   config.require_master_key = true if Rake.application.top_level_tasks.none? { |task| task.start_with?('assets:') }
+  # else
+  #   config.require_master_key = true
+  # end
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
