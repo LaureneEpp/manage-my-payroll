@@ -21,3 +21,6 @@ console_command = "/rails/bin/rails console"
 [[statics]]
   guest_path = "/rails/public"
   url_prefix = "/"
+
+[[env]]
+  SECRET_KEY_BASE = "a78357628f11dcfe288ae2381a824caa59effc996baf3014c6c572f088699323e075398094601a150852bf2709c069b408be4fe533b0b416ec6a6ae778dd164b"
