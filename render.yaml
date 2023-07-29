@@ -1,16 +1,16 @@
 databases:
   - name: postgres
+    plan: free
     ipAllowList: []
     # databaseName: manage-my-payroll
     # user: manage-my-payroll
-    plan: free
 
 services:
   - type: web
     name: manage-my-payroll
     plan: free
     env: ruby
-    runtime: ruby
+    # runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
@@ -20,3 +20,8 @@ services:
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
+    - type: redis
+    name: cache
+    ipAllowList: []
+    plan: free
+    maxmemoryPolicy: allkeys-lfu
