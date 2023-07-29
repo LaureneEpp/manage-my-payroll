@@ -6,7 +6,7 @@ class CreateEmployees < ActiveRecord::Migration[7.0]
       t.string :email
       t.string :city
       t.string :country
-      t.boolean :manager
+      t.boolean :manager, default: false
       t.references :team, null: false, foreign_key: true
       t.references :position, null: false, foreign_key: true
 
