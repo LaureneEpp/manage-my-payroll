@@ -7,12 +7,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
+Employee.delete_all
 Team.delete_all
+Position.delete_all
 Departement.delete_all
 Allowance.delete_all
 Deduction.delete_all
-Position.delete_all
-Employee.delete_all
 Payslip.delete_all
 
 puts "Departments deleted"
