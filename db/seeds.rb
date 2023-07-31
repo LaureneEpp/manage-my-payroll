@@ -7,8 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
-Departement.delete_all
 Team.delete_all
+Departement.delete_all
 Allowance.delete_all
 Deduction.delete_all
 Position.delete_all
@@ -89,19 +89,19 @@ end
 
 puts "#{Deduction.count} deductions have been created."
 
-10.times do
-    Payslip.create!(
-        present: rand(1..20),
-        absent: rand(1..20),
-        salary: rand(2000..5000),
-        allowance_amount: 0,
-        deduction_amount: 0,
-        net: rand(2000..5000),
-        employee_id: rand(1..10)        
-    )
-end
+# 10.times do
+#     Payslip.create!(
+#         present: rand(1..20),
+#         absent: rand(1..20),
+#         salary: rand(2000..5000),
+#         allowance_amount: 0,
+#         deduction_amount: 0,
+#         net: rand(2000..5000),
+#         employee_id: rand(1..10)        
+#     )
+# end
 
-puts "#{Payslip.count} payslips have been created."
+# puts "#{Payslip.count} payslips have been created."
 
 
 
