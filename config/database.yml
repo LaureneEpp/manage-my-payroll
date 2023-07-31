@@ -83,5 +83,5 @@ production:
   <<: *default
   database: manage_my_payroll_production
   username: manage_my_payroll
-  # url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
   password: <%= ENV["MANAGE_MY_PAYROLL_DATABASE_PASSWORD"] %>
