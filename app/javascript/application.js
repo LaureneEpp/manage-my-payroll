@@ -5,3 +5,6 @@ import "./custom/sideMenu.js"
 import "./custom/modal.js"
 import "./custom/boxSelection.js"
 import "./custom/dropdown.js"
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
