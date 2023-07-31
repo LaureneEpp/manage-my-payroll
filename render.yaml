@@ -22,5 +22,5 @@ services:
   - type: redis
     name: cache
     ipAllowList: []
-    plan: free
+    plan: starter
     maxmemoryPolicy: allkeys-lfu
